@@ -1,0 +1,12 @@
+@import "src/assets/css/variables";
+
+td {
+  a {
+    font-weight: bold;
+    color: $secondary;
+  }
+  span.licensed:hover {
+    text-decoration: none;
+  }
+}
+

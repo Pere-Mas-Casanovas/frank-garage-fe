@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>Plate number</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Acquistion</th>
+            <th>Manufacture</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of carsList">
+            <td *ngIf="car.licensed"><a [routerLink]="['/car-detail']" [queryParams]="{ plateNumber: car.plateNumber}">{{ car.plateNumber }}</a></td>
+            <td *ngIf="!car.licensed">{{ car.plateNumber }}</td>
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.acquisitionDate | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ car.manufactureDate | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ car.price | currency: 'eu' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

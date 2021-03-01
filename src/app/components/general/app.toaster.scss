@@ -1,0 +1,32 @@
+@import "src/assets/css/variables";
+
+.toast-header {
+  font-size: large;
+  font-family: var(--primary-font-bold);
+}
+
+.toast-body {
+  font-size: 1rem;
+  white-space: pre-line;
+}
+
+// Error
+.toast-header.error,
+.toast-header.error button.close,
+.toast-body.error {
+  color: var(--basic-danger);
+}
+
+// Info
+.toast-header.info {
+  color: var(--primary-color);
+
+  button-close {
+    color: $default;
+  }
+}
+
+.toast-body.info {
+  color: var(--primary-color);
+}
+
