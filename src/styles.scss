@@ -1,4 +1,6 @@
 @import "assets/css/variables";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "assets/css/custom-popover-content";
 
 body {
   font-family: 'Roboto';
@@ -7,4 +9,9 @@ body {
 
 h1, h2, h3, h4 {
   color: $primary;
+}
+
+a {
+  font-weight: bold;
+  color: $secondary;
 }

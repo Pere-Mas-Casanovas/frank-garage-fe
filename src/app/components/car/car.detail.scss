@@ -1,0 +1,19 @@
+@import 'src/assets/css/variables.scss';
+
+div.detail {
+
+  label {
+    color: #2A653F;
+  }
+  padding: 2.5rem;
+
+  h3.detail-section{
+    text-transform: uppercase;
+    color: rgba($default, 0.75);
+    font-size: smaller;
+  }
+
+  .btn {
+    margin: 1.8rem 0;
+  }
+}

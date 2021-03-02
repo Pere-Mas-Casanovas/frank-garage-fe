@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CarDetail, CarService} from '../../services/car.service';
+import {CarDetail, CarItem, CarService} from '../../services/car.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {ShoppingCartService} from '../../services/shopping.cart.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -12,14 +13,21 @@ export class CarDetailComponent implements OnInit {
 
   carDetail: CarDetail;
 
-  constructor(private service: CarService, private route: ActivatedRoute) {
+  constructor(
+    private carService: CarService,
+    private shoppingCartService: ShoppingCartService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    const sub: Subscription = this.service.getCarDetail(this.route.snapshot.queryParams['plateNumber']).subscribe((data) => {
+    const sub: Subscription = this.carService.getCarDetail(this.route.snapshot.queryParams.plateNumber).subscribe((data) => {
       this.carDetail =  data;
       sub.unsubscribe();
     });
+  }
+
+  addToCart(carItem: CarItem): void {
+    this.shoppingCartService.addItem(carItem);
   }
 
 }

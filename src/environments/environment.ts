@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendAPI: 'http://localhost:8991/cognizant/frank-garage/rest'
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+        <i *ngIf="items.length === 0" class="fas fa-shopping-cart empty"></i>
+        <i *ngIf="items.length > 0" class="fas fa-shopping-cart not-empty" [popover]="shoppingCartContent"
+           [popoverAnimation]="true"
+           [popoverPlacement]="'bottom-right'"
+           [popoverSize]="'auto'"
+           [popoverOnHover]="false"
+           [popoverCloseOnClickOutside]="true">
+          <popover-content #shoppingCartContent [closeOnClickOutside]="true">
+            <div class="shopping-cart-pop">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12">
+                    <h3>Added items</h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <table class="table table-borderless ">
+                      <tbody>
+                      <tr *ngFor="let item of items">
+                        <td><span class="cart-item">{{ item.brand }} - {{ item.model }}</span></td>
+                        <td><a (click)="removeItem(item)" class="btn btn-primary">Remove</a></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <span class="total">Total price: {{ totalCartPrice$ | currency: 'EUR' }}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button class="btn btn-success btn-block">Checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </popover-content>
+        </i>
+        <span *ngIf="items.length > 0" class="items-number">
+          {{ items.length }}
+        </span>
+    </div>
+  </div>
+</div>

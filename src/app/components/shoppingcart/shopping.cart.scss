@@ -1,0 +1,67 @@
+@import "src/assets/css/variables";
+
+div.container-fluid {
+  padding: 2.5rem;
+
+  .fas {
+    font-size: 2.5rem;
+  }
+
+  .fas.empty {
+    color: rgba($secondary, 0.15);
+  }
+
+  .fas.not-empty:hover {
+    cursor: pointer;
+  }
+
+  span.items-number {
+    color: $secondary;
+    font-weight: bolder;
+    padding: 0 0.2rem;
+  }
+}
+
+div.shopping-cart-pop {
+  min-width: 20vw;
+
+  div.container-fluid {
+    padding: 0;
+  }
+
+  table {
+    margin-bottom: 0;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+  h3 {
+    color: rgba($default, 0.5);
+    font-size: small;
+    padding: 0.7rem;
+    text-transform: uppercase;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: bolder;
+  }
+
+  span.cart-item {
+    font-weight: bolder;
+    color: $default;
+    padding-right: 1rem;
+  }
+
+  span.total {
+    font-weight: bolder;
+    font-size: 1rem;
+    color: $default;
+    text-transform: uppercase;
+    padding-left: 0.7rem;
+  }
+
+  .btn-success {
+    margin: 1.8rem 0 0 0.7rem;
+  }
+}

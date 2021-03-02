@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 export interface CarItem {
   id: string;
@@ -35,12 +36,12 @@ export class CarService {
   }
 
   public getCars(): void {
-    this.httpClient.get<CarItem[]>('http://localhost:8991/cognizant/frank-garage/rest/car/list', {})
+    this.httpClient.get<CarItem[]>(`${environment.backendAPI}/car/list`, {})
       .subscribe(
         (data) => this.carsList.next(data));
   }
 
   public getCarDetail(plateNumber: string): Observable<CarDetail> {
-    return this.httpClient.get<CarDetail>(`http://localhost:8991/cognizant/frank-garage/rest/car/detail/${plateNumber}`);
+    return this.httpClient.get<CarDetail>(`${environment.backendAPI}/car/detail/${plateNumber}`);
   }
 }
