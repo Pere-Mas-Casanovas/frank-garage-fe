@@ -8,32 +8,17 @@ export class GlobalErrorHandler implements ErrorHandler {
   constructor(private injector: Injector) {
   }
 
-  handleError(error: Error | HttpErrorResponse): void {
+  handleError(httpError: Error | HttpErrorResponse): void {
 
     const zone = this.injector.get(NgZone);
     const toaster = this.injector.get(ToasterService);
 
-    (error instanceof HttpErrorResponse
+    (httpError instanceof HttpErrorResponse
       ? () => {
         zone.run(() => {
-          toaster.error(error.statusText);
+          toaster.error(httpError.error.message);
         });
       }
-      : () => console.log(error.stack))();
-  }
-
-  // TODO Read note below:
-  // »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
-  // Not used for now, until we come up with an agreement
-  // regarding the information sent back from the server
-  private parseCustomError(error: HttpErrorResponse): string {
-    if (error.error) {
-      try {
-        return JSON.parse(error.error).message;
-      } catch (e) {
-        // Do nothing
-      }
-      return null;
-    }
+      : () => console.log(httpError.stack))();
   }
 }
